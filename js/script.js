@@ -4,7 +4,7 @@ function printMessage(msg){
   div.innerHTML = msg;
   document.getElementById('messages').appendChild(div);
 }
-function getMoveName(PlayerMove){
+const getMoveName = function(PlayerMove){
   if(PlayerMove == 1){
     return 'kamień';
   }if(PlayerMove == 2){
@@ -16,14 +16,15 @@ function getMoveName(PlayerMove){
     return 'nieznany ruch';
   }
 }
-function playGame(playerInput){
-  console.log('Gracz klik: ' + playerInput);
-  let playerMove = getMoveName(playerInput);
-  let randomNumber = Math.floor(Math.random() * 3 + 1);
-  console.log('Wylosowana liczba to: ' + randomNumber);
-  let computerMove = getMoveName(randomNumber);
 
-  function displayResult(argComputerMove, argPlayerMove){
+const playGame = function(playerInput){
+  console.log('Gracz klik: ' + playerInput);
+  const playerMove = getMoveName(playerInput);
+  const randomNumber = Math.floor(Math.random() * 3 + 1);
+  console.log('Wylosowana liczba to: ' + randomNumber);
+  const computerMove = getMoveName(randomNumber);
+
+  const displayResult = function(argComputerMove, argPlayerMove){
     printMessage('wybrałeś ' + argPlayerMove + ', Komputer wybrał ' + argComputerMove );
     if(argComputerMove == 'nożyce' && argPlayerMove == 'papier'){
         printMessage ('Przegrywasz!');
