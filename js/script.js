@@ -22,13 +22,13 @@ const getMoveName = function(PlayerMove){
 const rock = 'Kamień'
 const paper = 'Papier'
 const scissors = 'Nożyczki'
+const randomNumber = Math.floor(Math.random() * 3 + 1);
+console.log('Wylosowana liczba to: ' + randomNumber);
+const computerMove = getMoveName(randomNumber);
 
 const playGame = function(playerInput){
   console.log('Gracz klik: ' + playerInput);
   const playerMove = getMoveName(playerInput);
-  const randomNumber = Math.floor(Math.random() * 3 + 1);
-  console.log('Wylosowana liczba to: ' + randomNumber);
-  const computerMove = getMoveName(randomNumber);
   clearMessages();
   const displayResult = function(argComputerMove, argPlayerMove){
     printMessage('wybrałeś ' + argPlayerMove + ', Komputer wybrał ' + argComputerMove );
