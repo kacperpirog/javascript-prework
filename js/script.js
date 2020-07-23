@@ -4,18 +4,24 @@ function printMessage(msg){
   div.innerHTML = msg;
   document.getElementById('messages').appendChild(div);
 }
+function clearMessages(){
+	document.getElementById('messages').innerHTML = '';
+}
 const getMoveName = function(PlayerMove){
   if(PlayerMove == 1){
-    return 'kamień';
+    return rock ;
   }if(PlayerMove == 2){
-    return'papier';
+    return paper;
   }if(PlayerMove == 3){
-    return 'nożyce';
+    return scissors;
   } else {
     printMessage('Nie znam ruchu o id ' + PlayerMove + '.');
     return 'nieznany ruch';
   }
 }
+const rock = 'Kamień'
+const paper = 'Papier'
+const scissors = 'Nożyczki'
 
 const playGame = function(playerInput){
   console.log('Gracz klik: ' + playerInput);
@@ -23,20 +29,20 @@ const playGame = function(playerInput){
   const randomNumber = Math.floor(Math.random() * 3 + 1);
   console.log('Wylosowana liczba to: ' + randomNumber);
   const computerMove = getMoveName(randomNumber);
-
+  clearMessages();
   const displayResult = function(argComputerMove, argPlayerMove){
     printMessage('wybrałeś ' + argPlayerMove + ', Komputer wybrał ' + argComputerMove );
-    if(argComputerMove == 'nożyce' && argPlayerMove == 'papier'){
+    if(argComputerMove == scissors && argPlayerMove == paper){
         printMessage ('Przegrywasz!');
-    } else if(argComputerMove == 'papier' && argPlayerMove == 'kamień'){
+    } else if(argComputerMove == paper && argPlayerMove == rock){
         printMessage(' wygrywasz!');
-    } else if(argComputerMove == 'nożyce' && argPlayerMove == 'kamień'){
+    } else if(argComputerMove == scissors && argPlayerMove == rock){
         printMessage('Przegrywasz!');
-    } else if(argComputerMove == 'papier' && argPlayerMove == 'nożyce'){
+    } else if(argComputerMove == paper && argPlayerMove == scissors){
         printMessage(' wygrywasz!');
-    } else if(argComputerMove == 'kamień' && argPlayerMove == 'nożyce'){
+    } else if(argComputerMove == rock && argPlayerMove == scissors){
         printMessage('Przegrywasz!');
-    } else if(argComputerMove == 'kamień' && argPlayerMove == 'papier'){
+    } else if(argComputerMove == rock && argPlayerMove == paper){
       printMessage('wygrywasz!');
     } else if (argComputerMove == argPlayerMove) {
         printMessage('remis')
@@ -54,5 +60,3 @@ document.getElementById('play-scissors').addEventListener('click', function(){
   playGame(3);
 });
 console.log(playGame);
-
-  
